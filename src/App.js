@@ -8,7 +8,7 @@ import Profile from './Pages/Profile'
 
 function App() {
   return (
-    <BrowserRouter basename='/tutorial'> {/*basename is used for homepage to indicate the route and name after slash*/}
+    <BrowserRouter forceRefresh> {/*basename is used for homepage to indicate the route and name after slash*/}
       <div className="App">
         <Header />
       </div>
