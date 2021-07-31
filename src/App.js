@@ -8,7 +8,11 @@ import Profile from './Pages/Profile'
 
 function App() {
   return (
-    <BrowserRouter forceRefresh> {/*basename is used for homepage to indicate the route and name after slash*/}
+    <BrowserRouter getUserConfirmation={
+      (message, callback) => {
+        callback(window.confirm())
+      }
+    }> {/*basename is used for homepage to indicate the route and name after slash*/}
       <div className="App">
         <Header />
       </div>
