@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { useState } from 'react'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import './App.css';
 import Header from './components/Header'
 import Home from './Pages/Home'
@@ -9,22 +10,30 @@ import Post from './Pages/Post'
 
 
 function App() {
+
+  const [login, setLogin] = useState(false)
+
+
   return (
-    <BrowserRouter getUserConfirmation={
-      (message, callback) => {
-        callback(window.confirm())
-      }
-    }> {/*basename is used for homepage to indicate the route and name after slash*/}
+    <BrowserRouter> {/*basename is used for homepage to indicate the route and name after slash*/}
       <div className="App">
         <Header />
-      </div>
+
+      <button onClick={() => setLogin(!login)}> { login ? "logout" : "login" } </button>
+
+
       <Switch>
         <Route path='/' component={Home} exact/> {/* Homepage '/' */}
         <Route path='/about' component={About} />
-        <Route path='/profile' component={Profile} />
+        {/* create REDIRECT to restrict acces */}
+        <Route path='/profile'>
+          { login ? <Profile /> : <Redirect to='/' />}
+        </Route>
         <Route path='/post/:id' component={Post} />
         <Route component={NotFound} />
       </Switch>
+
+      </div>
     </BrowserRouter>
   );
 }
