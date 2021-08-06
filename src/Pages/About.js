@@ -1,7 +1,12 @@
+import { useEffect } from 'react'
+
 const About = () => {
-    return (
-        <h1> About </h1>
-    )
+
+    useEffect(() => {
+        window.scroll(0, 0)
+     }, [])
+
+    return <h1> About </h1>
 }
 
 export default About

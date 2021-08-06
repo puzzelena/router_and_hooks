@@ -1,7 +1,12 @@
+import { useEffect } from 'react'
+
 const Profile = () => {
-    return (
-        <h1> Profile </h1>
-    )
+
+    useEffect(() => {
+        window.scroll(0, 0)
+     }, [])
+
+    return <h1> Profile </h1>
 }
 
 export default Profile
